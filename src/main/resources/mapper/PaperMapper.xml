@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.twt.survey.app.dao.PaperMapper">
+    <select id="getPaperByOwner" resultType="Paper">
+        SELECT * FROM paper WHERE owner = #{param1};
+    </select>
+    <insert id = "addPaper">
+        INSERT INTO paper (`owner` , `title` , `create_time` , `status` , `start` ,`end`) VALUES (#{param1},#{param2},#{param3},#{param4},#{param5},#{param6})
+    </insert>
+    <select id="getPaperById" resultType="Paper">
+        SELECT * FROM paper WHERE id = #{param1};
+    </select>
+    <update id="changePaper">
+        UPDATE paper
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="param2 != null">start = #{param2},</if>
+            <if test="param3 != null">`end` = #{param3}</if>
+            <if test="param4 != null">status = #{param4},</if>
+        </set>
+        WHERE id = #{param5}
+    </update>
+</mapper>

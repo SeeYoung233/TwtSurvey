@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.twt.survey.app.dao.QuestionMapper">
+    <resultMap id="QuestionMap" type="Question">
+        <id column="id" property="id" jdbcType="int"/>
+        <result column="type" property="type" jdbcType="int"/>
+        <result column="paper" property="paper" jdbcType="int"/>
+        <collection property="option" ofType="cn.twt.survey.app.entity.Option" select="getOptionlist" column="{QuestionId = id}">
+            <constructor>
+                <arg column="id"/>
+                <arg column="content"/>
+                <arg column="question"/>
+            </constructor>
+        </collection>
+    </resultMap>
+
+    <select id="getQuestionByPaper" resultType="QuestionMap">
+        SELECT (*) FROM `question` where id = #{param1}
+    </select>
+
+    <select id="getOptionList" resultType="cn.twt.survey.app.entity.Option">
+        SELECT (*) FROM `option` where question = #{QuestionId}
+    </select>
+
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.twt.survey.app.dao.UserMapper">
+    <select id="login" resultType="User">
+        SELECT * FROM users WHERE phone = #{param1};
+    </select>
+    <select id="getUserByPhone" resultType="User">
+        SELECT * FROM users WHERE phone = #{param1};
+    </select>
+    <select id="getUserByToken" resultType="User">
+        SELECT * FROM users WHERE token = #{param1};
+    </select>
+    <insert id ="register">
+        INSERT INTO users ( phone, pwd,`name`) VALUES (#{param1},#{param2},#{param3})
+    </insert>
+</mapper>
