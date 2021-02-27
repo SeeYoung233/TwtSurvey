@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 @Mapper
 public interface QuestionMapper {
-    public List<Question> getQuestionByPaper();
+    public List<Question> getQuestionByPaper(int paper);
 }

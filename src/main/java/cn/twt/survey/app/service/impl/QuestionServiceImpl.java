@@ -1,5 +1,6 @@
 package cn.twt.survey.app.service.impl;
 
+import cn.twt.survey.app.dao.QuestionMapper;
 import cn.twt.survey.app.entity.Question;
 import cn.twt.survey.app.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,10 @@ import java.util.List;
 @Service
 public class QuestionServiceImpl implements QuestionService {
     @Autowired
-    QuestionService questionService;
+    QuestionMapper questionMapper;
 
     @Override
     public List<Question> getQuestionByPaper(int paper) {
-        return questionService.getQuestionByPaper(paper);
+        return questionMapper.getQuestionByPaper(paper);
     }
 }

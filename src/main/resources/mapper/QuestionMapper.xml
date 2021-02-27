@@ -17,8 +17,8 @@
         </collection>
     </resultMap>
 
-    <select id="getQuestionByPaper" resultMap="QuestionMap">
-        SELECT * FROM `question` where id = #{param1}
+    <select id="getQuestionByPaper" resultMap="questionMap">
+        SELECT * FROM `question` where paper = #{param1}
     </select>
 
     <select id="getOptionList" resultType="Option">

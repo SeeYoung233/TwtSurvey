@@ -5,6 +5,7 @@ import cn.twt.survey.app.service.QuestionService;
 import cn.twt.survey.app.util.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class QuestionController {
     QuestionService questionService;
 
     @PostMapping("/api/question/getQuestionByPaper")
-    public ApiResponse getQuestionByPaper(int paper){
+    public ApiResponse getQuestionByPaper(@RequestParam("paperId") int paper){
         List<Question> questionList = questionService.getQuestionByPaper(paper);
         if(questionList != null){
             return ApiResponse.success(questionList);
