@@ -22,4 +22,9 @@ public class QuestionServiceImpl implements QuestionService {
     public boolean addQuestion(List<Question> questionList) {
         return questionMapper.addQuestion(questionList);
     }
+
+    @Override
+    public boolean changeQuestion(List<Question> questionList) {
+        return questionMapper.changeQuestion(questionList);
+    }
 }

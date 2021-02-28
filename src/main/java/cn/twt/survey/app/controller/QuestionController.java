@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -35,7 +36,7 @@ public class QuestionController {
         }
     }
     @PostMapping(value = "api/question/addQuestion",produces = "application/json;charset=UTF-8")
-    public ApiResponse AddQuestion(@RequestBody List<Question> questionList){
+    public ApiResponse addQuestion(@RequestBody List<Question> questionList){
         int paperId = 0;
         User currentUser = UserInfo.getUser();
         for (Question question: questionList) {
@@ -64,5 +65,29 @@ public class QuestionController {
             return ApiResponse.fail(404,"add fail");
         }
 
+    }
+    @PostMapping(value = "/api/question/changeQuestion",produces = "application/json;charset=UTF-8")
+    public ApiResponse changeQuestion(@RequestBody List<Question> questionList){
+        int paperId = 0;
+        List<Option> optionList = new ArrayList<Option>();
+        for (Question q:questionList) {
+            if(paperId == 0){
+                paperId = q.getPaper();
+                if(paperService.getPaperById(paperId).getOwner()!=UserInfo.getUser().getId()){
+                    return ApiResponse.fail(403,"illegal paperId");
+                }
+                optionList.addAll(q.getOption());
+            }else {
+                if(paperId != q.getPaper()){
+                    return ApiResponse.fail(403,"illegal paperId");
+                }
+                optionList.addAll(q.getOption());
+            }
+        }
+        if(questionService.changeQuestion(questionList)&&optionService.changeOption(optionList)){
+            return ApiResponse.success("succ");
+        }else {
+            return ApiResponse.fail(403,"fail");
+        }
     }
 }

@@ -6,7 +6,25 @@ public class Question {
     private int id;
     private int type;
     private int paper;
+    private int status;
+    private String content;
     private List<Option> option;
+
+    public String getContent() {
+        return content;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public int getId() {
         return id;

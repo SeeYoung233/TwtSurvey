@@ -10,4 +10,9 @@
             (#{option.content},#{option.question})
         </foreach>
     </insert>
+    <update id = "changeOption" parameterType="java.util.List">
+        <foreach collection="list" item="option" separator=";">
+            UPDATE `option` SET `content` = #{option.content} WHERE id = #{option.id}
+        </foreach>
+    </update>
 </mapper>

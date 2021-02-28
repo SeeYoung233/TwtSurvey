@@ -8,13 +8,9 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="INTEGER"/>
         <result column="paper" property="paper" jdbcType="INTEGER"/>
-        <collection property="option" ofType="cn.twt.survey.app.entity.Option" select="getOptionList" column="{question = id}">
-<!--            <constructor>-->
-<!--                <arg column="id"/>-->
-<!--                <arg column="content"/>-->
-<!--                <arg column="question"/>-->
-<!--            </constructor>-->
-        </collection>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <collection property="option" ofType="cn.twt.survey.app.entity.Option" select="getOptionList" column="{question = id}"/>
     </resultMap>
 
     <select id="getQuestionByPaper" resultMap="questionMap">
@@ -33,4 +29,9 @@
             )
         </foreach>
     </insert>
+    <update id = "changeQuestion" parameterType="java.util.List">
+        <foreach collection="list" item="question" separator=";">
+            UPDATE `question` SET `content` = #{question.content},`type` = #{question.type} WHERE id = #{question.id}
+        </foreach>
+    </update>
 </mapper>

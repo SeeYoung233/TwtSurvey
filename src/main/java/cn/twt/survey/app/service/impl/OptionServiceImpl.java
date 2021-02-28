@@ -16,4 +16,9 @@ public class OptionServiceImpl implements OptionService {
     public boolean addOption(List<Option> optionList) {
         return optionMapper.addOption(optionList);
     }
+
+    @Override
+    public boolean changeOption(List<Option> optionList) {
+        return optionMapper.changeOption(optionList);
+    }
 }
