@@ -24,7 +24,7 @@ public class RecordController {
             return ApiResponse.fail(403,"fail");
         }
     }
-    @GetMapping("/api/record/getRecordByPaper")
+    @PostMapping("/api/record/getRecordByPaper")
     public ApiResponse getRecordByPaper(@RequestParam("paperId") int paperId){
         if(paperService.getPaperById(paperId).getOwner() == UserInfo.getUser().getId()){
             return ApiResponse.success(recordService.getRecordByPaper(paperId));
