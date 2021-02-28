@@ -24,5 +24,13 @@
     <select id="getOptionList" resultType="Option">
         SELECT * FROM `option` where question = #{question}
     </select>
-
+    <insert id="addQuestion" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO `question` (`type`,`paper`) VALUES
+        <foreach collection="list" item="question" separator=",">
+            (
+                #{question.type},
+                #{question.paper}
+            )
+        </foreach>
+    </insert>
 </mapper>

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface QuestionService {
     public List<Question> getQuestionByPaper(int paper);
+    public boolean addQuestion(List<Question> questionList);
 }

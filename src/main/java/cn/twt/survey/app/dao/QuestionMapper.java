@@ -10,4 +10,5 @@ import java.util.List;
 @Mapper
 public interface QuestionMapper {
     public List<Question> getQuestionByPaper(int paper);
+    public boolean addQuestion(List<Question> questionList);
 }

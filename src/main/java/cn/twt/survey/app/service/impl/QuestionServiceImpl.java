@@ -17,4 +17,9 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> getQuestionByPaper(int paper) {
         return questionMapper.getQuestionByPaper(paper);
     }
+
+    @Override
+    public boolean addQuestion(List<Question> questionList) {
+        return questionMapper.addQuestion(questionList);
+    }
 }

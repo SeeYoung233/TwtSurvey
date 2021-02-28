@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.twt.survey.app.dao.OptionMapper">
+    <insert id="addOption" parameterType="java.util.List" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO `option` (`content`,`question`) VALUES
+        <foreach collection="list" item="option" separator=",">
+            (#{option.content},#{option.question})
+        </foreach>
+    </insert>
+</mapper>
