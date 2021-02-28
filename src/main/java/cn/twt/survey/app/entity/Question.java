@@ -6,7 +6,7 @@ public class Question {
     private int id;
     private int type;
     private int paper;
-    private int status;
+    private int status = 1;
     private String content;
     private List<Option> option;
 

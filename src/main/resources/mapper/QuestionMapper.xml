@@ -31,7 +31,7 @@
     </insert>
     <update id = "changeQuestion" parameterType="java.util.List">
         <foreach collection="list" item="question" separator=";">
-            UPDATE `question` SET `content` = #{question.content},`type` = #{question.type} WHERE id = #{question.id}
+            UPDATE `question` SET `content` = #{question.content},`type` = #{question.type} ,`status` = #{question.status} WHERE id = #{question.id}
         </foreach>
     </update>
 </mapper>

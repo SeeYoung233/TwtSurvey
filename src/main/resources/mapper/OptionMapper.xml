@@ -12,7 +12,7 @@
     </insert>
     <update id = "changeOption" parameterType="java.util.List">
         <foreach collection="list" item="option" separator=";">
-            UPDATE `option` SET `content` = #{option.content} WHERE id = #{option.id}
+            UPDATE `option` SET `content` = #{option.content} ,`status` = #{option.status} WHERE id = #{option.id}
         </foreach>
     </update>
 </mapper>
