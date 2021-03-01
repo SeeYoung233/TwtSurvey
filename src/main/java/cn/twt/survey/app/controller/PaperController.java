@@ -78,7 +78,7 @@ public class PaperController {
             return ApiResponse.fail(403,"illegal user");
         }
     }
-    @PostMapping("api/paper/getPaper")
+    @PostMapping("/api/paper/getPaper")
     public ApiResponse getPaperById(int id){
         Paper paper = paperService.getPaperById(id);
         if(paper != null){
